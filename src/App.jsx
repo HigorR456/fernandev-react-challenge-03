@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+
 /*
 * CHALLENGE progresso do formulário
 
@@ -36,24 +38,82 @@ do formulário e zerar a barra de progresso novamente.
 */
 
 function App() {
+
+  const [bar, setBar] = useState(0)
+  const [nameProgress, setNameProgress] = useState(0)
+  const [emailProgress, setEmailProgress] = useState(0)
+  const [selectProgress, setSelectProgress] = useState(0)
+  const [radioProgress, setRadioProgress] = useState(0)
+  const [progressBar, setProgressBar] = useState(0)
+
+  useEffect(() => {
+    setProgressBar(nameProgress+emailProgress+selectProgress+radioProgress);
+    console.log('hey')
+  })
+
+  const showBar = () => {
+    setBar(1);
+    console.log(bar)
+  }
+
+  const nameValidate = (event) => {
+    if (/(\w.+\s).+/i.test(event.target.value)) {
+      console.log('true NAME');
+      setNameProgress(100)
+    } else setNameProgress(0)
+
+    console.log(event.target.value)
+  }
+
+  const emailValidate = (event) => {
+    if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(event.target.value)) {
+      console.log('true EMAIL');
+      setEmailProgress(100);
+    } else setEmailProgress(0)
+
+    console.log('progressBar');
+    console.log(progressBar);
+  }
+
+  const handleOption = () => {
+    if ((document.querySelector('.select').value) === '') {
+      setSelectProgress(0);
+    } else setSelectProgress(100);
+
+    console.log(document.querySelector('.select').value)
+  }
+
+  const handleRadio = () => {
+    setRadioProgress(100);
+  }
+
+  const handleFormSubmission = () => {
+    alert('Formulário enviado com sucesso!');
+    document.querySelector('.input').reset;
+  }
+
   return (
-    <div className='App'>
+    <div className='App' onClick={showBar}>
       <h3>desafio fernandev</h3>
       <h1>progresso do formulário</h1>
 
       <main>
         {/* crie a barra de progresso aqui */}
+        {bar>0 && <div className='bar-container'>
+          {progressBar>0 && <div className='bar' style={{width: progressBar}}></div>}
+          </div>}
+
         <div className='form-group'>
           <label htmlFor=''>Nome Completo</label>
-          <input />
+          <input className='input' onChange={nameValidate} />
         </div>
         <div className='form-group'>
           <label htmlFor=''>E-mail</label>
-          <input />
+          <input onChange={emailValidate} />
         </div>
-        <div className='form-group'>
+        <div className='form-group' >
           <label htmlFor=''>Estado Civil</label>
-          <select>
+          <select className='select' onClick={handleOption}>
             <option value=''>- selecione...</option>
             <option value='solteiro'>Solteiro</option>
             <option value='casado'>Casado</option>
@@ -64,14 +124,14 @@ function App() {
           <label htmlFor=''>Gênero</label>
           <div className='radios-container'>
             <span>
-              <input type='radio' /> Masculino
+              <input onClick={handleRadio} type='radio' name='gender' /> Masculino
             </span>
             <span>
-              <input type='radio' /> Feminino
+              <input onClick={handleRadio} type='radio' name='gender' /> Feminino
             </span>
           </div>
         </div>
-        <button>Enviar Formulário</button>
+        <button disabled={progressBar != 400} onClick={handleFormSubmission} >Enviar Formulário</button>
       </main>
     </div>
   );

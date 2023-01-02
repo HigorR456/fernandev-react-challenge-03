@@ -84,13 +84,13 @@ select {
   padding-left: 10px;
   font-family: Verdana;
   font-size: 14px;
-  color: #333;
+  color: rgb(255, 255, 255);
 }
 button {
   height: 40px;
   width: 100%;
   font-size: 16px;
-  color: #333;
+  color: rgb(255, 255, 255);
 }
 
 button:hover {
