@@ -48,12 +48,12 @@ function App() {
 
   useEffect(() => {
     setProgressBar(nameProgress+emailProgress+selectProgress+radioProgress);
-    console.log('hey')
+    console.log('useEffect')
   })
 
   const showBar = () => {
     setBar(1);
-    console.log(bar)
+    console.log('bar', bar)
   }
 
   const nameValidate = (event) => {
@@ -71,8 +71,7 @@ function App() {
       setEmailProgress(100);
     } else setEmailProgress(0)
 
-    console.log('progressBar');
-    console.log(progressBar);
+    console.log('progressBar', progressBar);
   }
 
   const handleOption = () => {
@@ -88,8 +87,16 @@ function App() {
   }
 
   const handleFormSubmission = () => {
+    document.querySelector('.input1').value = '';
+    document.querySelector('.input2').value = '';
+    document.querySelector('.select').value = '';
+    document.querySelector('input[name="gender"]:checked').checked = false;
+    setNameProgress(0);
+    setEmailProgress(0);
+    setSelectProgress(0);
+    setRadioProgress(0);
+
     alert('Formulário enviado com sucesso!');
-    document.querySelector('.input').reset;
   }
 
   return (
@@ -105,15 +112,15 @@ function App() {
 
         <div className='form-group'>
           <label htmlFor=''>Nome Completo</label>
-          <input className='input' onChange={nameValidate} />
+          <input className='input1' onChange={nameValidate} />
         </div>
         <div className='form-group'>
           <label htmlFor=''>E-mail</label>
-          <input onChange={emailValidate} />
+          <input className='input2' onChange={emailValidate} />
         </div>
         <div className='form-group' >
           <label htmlFor=''>Estado Civil</label>
-          <select className='select' onClick={handleOption}>
+          <select className='select' onChange={handleOption}>
             <option value=''>- selecione...</option>
             <option value='solteiro'>Solteiro</option>
             <option value='casado'>Casado</option>
