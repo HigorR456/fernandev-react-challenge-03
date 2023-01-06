@@ -1,3 +1,12 @@
+# Progress bar
+
+This is my solution of the React Interview Challenge #03 created by fernandev.\
+In this challenge I manipulate the progress bar so it change as you fullfill the form, unlocking the submit button when it is 100% complete.\
+*After the images you can see fernandev's description and YouTube link to his solution of the challange.
+
+![alt text](imagesReadme\step1.JPG)
+![alt text](imagesReadme\step2.JPG)
+
 # fernandev
 
 ## React Interview Challenge #03

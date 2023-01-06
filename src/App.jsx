@@ -1,41 +1,36 @@
-import { useState, useEffect } from 'react'
-
 /*
-* CHALLENGE progresso do formulário
+* CHALLENGE form progress
 
-* INSTRUÇÕES
-Neste desafio sua missão é criar um formulário e seus 4 campos (com controlled inputs),
-juntamente com uma barra de progresso que altera-se conforme o usuário preenche os campos.
-- Crie também validações para cada campo conforme instruções abaixo.
+* INSTRUCTIONS
+In this challenge your mission is to create a form and its 4 fields (with controlled inputs), along with a progress bar that changes as the user fills in the fields.
+- Also create validations for each field as instructed below.
 
-* BARRA DE PROGRESSO
-Para aproveitar estilização já definida, crie:
-- a barra com um elemento pai chamado .bar-container e seu filho .bar
+* PROGRESS BAR
+To take advantage of already defined styling, create:
+- the bar with a parent element called .bar-container and its child .bar
 
-* CAMPOS DO FORMULÁRIO:
-input - nome completo - válido se digitar no mínimo dois nomes,
-input - email - válido se digitar um e-mail,
-select - estado civil,
-radio - gênero
+* FORM FIELDS:
+input - full name - valid if you enter at least two names,
+input - email - valid if entering an email,
+select - marital status,
+radio - genre
 
-Para validação de e-mail use a seguinte RegEx: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+For email validation use the following RegEx: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\ .,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\. [0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA- Z]{2,}))$/;
 
-* FUNCIONAMENTO
-Espera-se que o formulário tenha 4 campos ao todo. Portanto, quando o usuário preencher
-o primeiro campo, a barra de progresso deve assumir 25% do tamanho total;
-o segundo campo, 50% e assim por diante...
+* OPERATION
+The form is expected to have 4 fields in all. Therefore, when the user fills in the first field, the progress bar must assume 25% of the total size;
+the second field, 50% and so on...
 
-Caso o usuário não tenha definido valores para os elementos de select e radio,
-os mesmos não devem ser considerados como preenchidos até então.
+If the user has not defined values ​​for the select and radio elements, they should not be considered as fulfilled until then.
 
-Se o usuário preencher um campo e apagar seu valor, este campo deve ser considerado como vazio,
-fazendo com que a barra de progresso regrida novamente.
+If the user fills in a field and deletes its value, this field must be considered as empty, causing the progress bar to rewind again.
 
-Desabilitar o botão de enviar caso todos os campos não estejam preenchidos/válidos.
+Disable the submit button if all fields are not filled in/valid.
 
-Ao enviar, deve-se apresentar um alert javascript com sucesso, limpar todos os campos
-do formulário e zerar a barra de progresso novamente.
+When sending, a javascript alert must be presented successfully, clear all fields of the form and reset the progress bar again.
 */
+
+import { useState, useEffect } from 'react'
 
 function App() {
 
@@ -105,7 +100,7 @@ function App() {
       <h1>progresso do formulário</h1>
 
       <main>
-        {/* crie a barra de progresso aqui */}
+        {/* create progress bar here */}
         {bar>0 && <div className='bar-container'>
           {progressBar>0 && <div className='bar' style={{width: progressBar}}></div>}
           </div>}
